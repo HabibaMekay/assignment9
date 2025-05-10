@@ -23,10 +23,7 @@
     }
   },
   "environments": {
-    "development": {
-      "deploy": {
-        "numReplicas": 1
-      },
+    "production": {
       "variables": {
         "SERVER_PORT": "8080",
         "SERVER_HOST": "0.0.0.0",

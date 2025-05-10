@@ -1,11 +1,17 @@
-FROM node:alpine
+FROM node:18-alpine
 
-WORKDIR /usr/local/app
+WORKDIR /app
+
+COPY package*.json ./
+RUN npm install --omit=dev
 
 COPY . .
 
-RUN npm install
+ENV SERVER_PORT=8080
+ENV SERVER_HOST=0.0.0.0
+ENV REDIS_HOST=redis
+ENV REDIS_PORT=6379
 
 EXPOSE 8080
 
-CMD ["npm", "start"]
+CMD ["node", "server.js"]
