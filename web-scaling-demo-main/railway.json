@@ -14,11 +14,16 @@
       "app": {
         "type": "web",
         "port": 8080,
-        "domains": ["your-app-name.up.railway.app"]
+        "domains": ["your-app-name.up.railway.app"],
+        "healthcheckPath": "/health"
       },
       "redis": {
         "type": "redis",
-        "version": "7"
+        "version": "7",
+        "disk": {
+          "size": 1,
+          "mountPath": "/data"
+        }
       }
     }
   },
@@ -27,9 +32,9 @@
       "variables": {
         "SERVER_PORT": "8080",
         "SERVER_HOST": "0.0.0.0",
-        "REDIS_HOST": "redis",
-        "REDIS_PORT": "6379",
-        "WEATHER_API_URL": "https://api.open-meteo.com/v1/forecast"
+        "REDIS_URL": "${REDIS_URL}", // Railway automatically provides this
+        "WEATHER_API_URL": "https://api.open-meteo.com/v1/forecast",
+        "NODE_ENV": "production"
       }
     }
   }
