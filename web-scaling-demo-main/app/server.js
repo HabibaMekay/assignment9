@@ -12,17 +12,12 @@ const redisHost = process.env.REDIS_HOST;
 const redisPort = process.env.REDIS_PORT || 6379;
 
 const app = express();
-const redisUrl = process.env.REDIS_URL;
-
-const redisClient = redisUrl
-  ? createClient({ url: redisUrl }) 
-  : createClient({                
-      socket: {
-        host: redisHost,
-        port: redisPort,
-      },
-    });
-
+const redisClient = createClient({
+  socket: {
+    host: redisHost,
+    port: redisPort,
+  },
+});
 
 app.set('view engine', 'pug');
 
