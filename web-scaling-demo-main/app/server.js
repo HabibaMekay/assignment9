@@ -13,11 +13,9 @@ const redisPort = process.env.REDIS_PORT || 6379;
 
 const app = express();
 const redisClient = createClient({
-  socket: {
-    host: redisHost,
-    port: redisPort,
-  },
+  url: process.env.REDIS_URL|| 'redis://localhost:6379'
 });
+
 
 app.set('view engine', 'pug');
 
