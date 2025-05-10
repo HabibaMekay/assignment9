@@ -8,8 +8,8 @@ const serverHost = process.env.SERVER_HOST;
 const serverNumber = process.env.SERVER_NUMBER;
 const weatherApiUrl = process.env.WEATHER_API_URL;
 
-const redisHost = process.env.REDIS_HOST;
-const redisPort = process.env.REDIS_PORT;
+const redisHost = process.env.REDIS_HOST || 'redis';
+const redisPort = process.env.REDIS_PORT || 6379;
 
 const app = express();
 const redisClient = createClient({
